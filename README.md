@@ -2,9 +2,9 @@
 
 This repository documents my journey mastering Computer Science fundamentals using Go. My goal is to deepen my understanding of backend engineering and system design.
 
-## 📚 Learning Objectives
+## 📚 About This Repository
 
-This repository serves as a comprehensive guide through fundamental Computer Science concepts, with practical implementations in Go. The focus is on building a strong foundation for backend engineering and system design.
+This is a comprehensive collection of Computer Science fundamentals implemented in Go, covering data structures, algorithms, system design patterns, and backend engineering practices.
 
 ## 🎯 Core Topics
 
