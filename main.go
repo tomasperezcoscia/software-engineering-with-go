@@ -9,7 +9,8 @@ import (
 func main() {
 	//testVectors()
 	// testLinkedLists()
-	testQueues()
+	//testQueues()
+	testHashTables()
 }
 
 func testVectors() {
@@ -206,4 +207,8 @@ func testQueues() {
 	fmt.Printf("Dequeued: %v\n", q.Dequeue())
 
 	q.PrintSelf()
+}
+
+func testHashTables() {
+
 }
