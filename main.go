@@ -9,7 +9,8 @@ import (
 func main() {
 	//testVectors()
 	// testLinkedLists()
-	testQueues()
+	//testQueues()
+	testCircularBuffers()
 }
 
 func testVectors() {
@@ -206,4 +207,20 @@ func testQueues() {
 	fmt.Printf("Dequeued: %v\n", q.Dequeue())
 
 	q.PrintSelf()
+}
+
+func testCircularBuffers() {
+	cb := queues.NewCircularBuffer(4)
+	cb.Enqueue(1)
+	cb.Enqueue(2)
+	cb.Enqueue(3)
+	cb.Enqueue(4)
+	cb.Enqueue(5)
+	cb.Enqueue(6)
+	cb.Enqueue(7)
+	cb.Enqueue(8)
+	cb.Enqueue(9)
+	cb.Dequeue()
+	cb.Enqueue(10)
+	cb.PrintSelf()
 }
