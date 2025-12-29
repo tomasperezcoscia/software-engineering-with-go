@@ -5,13 +5,15 @@ import (
 	"software-engineering-with-go/arrays"
 	hash_tables "software-engineering-with-go/hash-tables"
 	"software-engineering-with-go/queues"
+	"sort"
 )
 
 func main() {
 	//testVectors()
 	// testLinkedLists()
 	//testQueues()
-	testHashTables()
+	//testHashTables()
+	testBinarySearch()
 }
 
 func testVectors() {
@@ -229,4 +231,22 @@ func testHashTables() {
 	ht.Delete("b")
 	fmt.Println(ht.ValueAt("b"))
 	ht.PrintSelf()
+}
+
+func testBinarySearch() {
+	v := arrays.NewVector(16)
+	v.Push(34)
+	v.Push(22)
+	v.Push(212)
+	v.Push(3)
+	v.Push(7)
+
+	sort.Ints(v.GetData())
+
+	v.PrintSelf()
+
+	index := arrays.BinarySearch(v, 3, 0, v.Size()-1)
+	fmt.Printf("\nValue at index: %v", index)
+	fmt.Printf("\nNon recursive search index: %v", v.BinarySearchNonRecursive(3))
+
 }

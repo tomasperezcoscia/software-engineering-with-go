@@ -1,5 +1,7 @@
 package arrays
 
+import "fmt"
+
 const MIN_NUMBER_OF_N = 16
 
 type Vector struct {
@@ -175,6 +177,45 @@ func (v *Vector) Find(item int) int {
 		}
 	}
 	return -1
+}
+
+func findMidPoint(a int, b int) int {
+	return (a + b) / 2
+}
+
+func BinarySearch(arr *Vector, value int, min int, max int) int {
+	if min > max {
+		return -1
+	}
+	midPoint := findMidPoint(min, max)
+	if arr.data[midPoint] > value {
+		return BinarySearch(arr, value, min, midPoint-1)
+	} else if arr.data[midPoint] < value {
+		return BinarySearch(arr, value, midPoint+1, max)
+	}
+	return midPoint
+}
+
+func (v *Vector) BinarySearchNonRecursive(value int) int {
+	minI := 0
+	maxI := v.size - 1
+	for minI <= maxI {
+		midPoint := findMidPoint(minI, maxI)
+		if v.data[midPoint] > value {
+			maxI = midPoint - 1
+		} else if v.data[midPoint] < value {
+			minI = midPoint + 1
+		} else if v.data[midPoint] == value {
+			return midPoint
+		}
+	}
+	return -1
+}
+
+func (v *Vector) PrintSelf() {
+	for i := range v.GetData() {
+		fmt.Printf("[%v]", v.GetData()[i])
+	}
 }
 
 // For testing purposes
