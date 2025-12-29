@@ -76,6 +76,19 @@ func (ll *LinkedList) ValueAt(index int) int {
 	return current.Data
 }
 
+func (ll *LinkedList) Find(value int) int {
+	current := ll.Head
+	index := 0
+	for current != nil && current.Data != value {
+		current = current.Next
+		index++
+	}
+	if current == nil {
+		return -1
+	}
+	return index
+}
+
 func (ll *LinkedList) PushFront(value int) {
 	if ll.IsEmpty() {
 		ll.Head = NewNode(value)

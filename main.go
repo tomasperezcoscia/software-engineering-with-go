@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"software-engineering-with-go/arrays"
+	hash_tables "software-engineering-with-go/hash-tables"
 	"software-engineering-with-go/queues"
 )
 
@@ -210,5 +211,22 @@ func testQueues() {
 }
 
 func testHashTables() {
-
+	ht := hash_tables.NewHashTable(4)
+	ht.Insert("a", 33)
+	ht.Insert("b", 44)
+	ht.Insert("c", 44)
+	ht.Insert("d", 44)
+	ht.Insert("e", 44)
+	ht.Insert("f", 33)
+	ht.Insert("g", 44)
+	ht.Insert("h", 44)
+	ht.Insert("j", 44)
+	ht.Insert("k", 44)
+	ht.PrintSelf()
+	ht.Delete("k")
+	ht.Delete("g")
+	ht.Delete("c")
+	ht.Delete("b")
+	fmt.Println(ht.ValueAt("b"))
+	ht.PrintSelf()
 }
