@@ -2,43 +2,43 @@ package hash_tables
 
 import "fmt"
 
-type node struct {
+type Node struct {
 	Key   string
 	Value int
-	Next  *node
+	Next  *Node
 }
 
-type linkedList struct {
-	Head *node
+type LinkedList struct {
+	Head *Node
 }
 
-type hashTable struct {
-	Keys []*linkedList
+type HashTable struct {
+	Keys []*LinkedList
 	Size int
 }
 
-func NewHashTable(size int) *hashTable {
-	return &hashTable{
-		Keys: make([]*linkedList, size),
+func NewHashTable(size int) *HashTable {
+	return &HashTable{
+		Keys: make([]*LinkedList, size),
 		Size: size,
 	}
 }
 
-func NewNode(key string, value int) *node {
-	return &node{
+func NewNode(key string, value int) *Node {
+	return &Node{
 		Key:   key,
 		Value: value,
 		Next:  nil,
 	}
 }
 
-func NewList(head *node) *linkedList {
-	return &linkedList{
+func NewList(head *Node) *LinkedList {
+	return &LinkedList{
 		Head: head,
 	}
 }
 
-func (ll *linkedList) AddOrUpdate(key string, value int) {
+func (ll *LinkedList) AddOrUpdate(key string, value int) {
 	current := ll.Head
 	for current.Next != nil && current.Key != key {
 		current = current.Next
@@ -51,7 +51,7 @@ func (ll *linkedList) AddOrUpdate(key string, value int) {
 	current.Next = newNode
 }
 
-func (ll *linkedList) Delete(key string) {
+func (ll *LinkedList) Delete(key string) {
 	current := ll.Head
 	if current == nil {
 		panic("Cant delete from empty list")
@@ -59,7 +59,6 @@ func (ll *linkedList) Delete(key string) {
 	if current.Key == key {
 		ll.Head = ll.Head.Next
 	}
-
 	for current.Next != nil {
 		if current.Next.Key == key {
 			current.Next = current.Next.Next
@@ -83,7 +82,7 @@ func (ll *linkedList) Delete(key string) {
 	}*/
 }
 
-func (ll *linkedList) ValueAt(key string) int {
+func (ll *LinkedList) ValueAt(key string) int {
 	current := ll.Head
 	for current != nil {
 		if current.Key == key {
@@ -98,7 +97,7 @@ func NumericValueOf(c rune) int {
 	return int(c)
 }
 
-func (ht *hashTable) Hash(key string) int {
+func (ht *HashTable) Hash(key string) int {
 	total := 0
 	for _, char := range key {
 		total += NumericValueOf(char)
@@ -106,7 +105,7 @@ func (ht *hashTable) Hash(key string) int {
 	return total % ht.Size
 }
 
-func (ht *hashTable) Insert(key string, value int) {
+func (ht *HashTable) Insert(key string, value int) {
 	if ht.Size == 0 {
 		panic("Cant insert in a 0 size dictionary")
 	}
@@ -121,7 +120,7 @@ func (ht *hashTable) Insert(key string, value int) {
 	}
 }
 
-func (ht *hashTable) Delete(key string) {
+func (ht *HashTable) Delete(key string) {
 	if ht.Size == 0 {
 		panic("Cant delete from a 0 size dictionary")
 	}
@@ -130,12 +129,12 @@ func (ht *hashTable) Delete(key string) {
 	ht.Keys[hashedKey].Delete(key)
 }
 
-func (ht *hashTable) ValueAt(key string) int {
+func (ht *HashTable) ValueAt(key string) int {
 	hashedKey := ht.Hash(key)
 	return ht.Keys[hashedKey].ValueAt(key)
 }
 
-func (ht *hashTable) PrintSelf() {
+func (ht *HashTable) PrintSelf() {
 	fmt.Println("--- Hash Table Content ---")
 	for i := 0; i < ht.Size; i++ {
 		fmt.Printf("Bucket [%d]: ", i)
