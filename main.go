@@ -5,6 +5,7 @@ import (
 	"software-engineering-with-go/arrays"
 	hash_tables "software-engineering-with-go/hash-tables"
 	"software-engineering-with-go/queues"
+	"software-engineering-with-go/trees"
 	"sort"
 )
 
@@ -13,7 +14,8 @@ func main() {
 	// testLinkedLists()
 	//testQueues()
 	//testHashTables()
-	testBinarySearch()
+	//testBinarySearch()
+	testBinaryTrees()
 }
 
 func testVectors() {
@@ -249,4 +251,21 @@ func testBinarySearch() {
 	fmt.Printf("\nValue at index: %v", index)
 	fmt.Printf("\nNon recursive search index: %v", v.BinarySearchNonRecursive(3))
 
+}
+
+func testBinaryTrees() {
+	root := &trees.Node{Data: 22}
+	root.NonRecursiveInsert(35)
+	root.NonRecursiveInsert(16)
+	root.NonRecursiveInsert(21)
+	root.NonRecursiveInsert(20)
+	root.NonRecursiveInsert(34)
+	root.NonRecursiveInsert(17)
+	root.NonRecursiveInsert(23)
+	root.NonRecursiveInsert(33)
+	root.NonRecursiveInsert(15)
+	root.NonRecursiveInsert(19)
+	root.NonRecursiveInsert(45)
+	root.NonRecursiveInsert(55)
+	root.PrintSelf()
 }

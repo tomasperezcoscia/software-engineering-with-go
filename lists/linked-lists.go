@@ -197,7 +197,7 @@ func (ll *LinkedList) Erase(index int) {
 	current.Next = current.Next.Next
 }
 
-func (ll *LinkedList) Value_n_from_end(n int) int {
+func (ll *LinkedList) ValueNFromEnd(n int) int {
 	left, right := ll.Head, ll.Head
 	for i := 0; n > i; i++ {
 		if right == nil {
