@@ -85,19 +85,19 @@ func (bt *Node) printSelfHelper(prefix string, childPrefix string, isRoot bool) 
 		fmt.Printf("%s%d\n", prefix, bt.Data)
 	}
 
-	// Print children
+	// Print children with L/R labels
 	if bt.Left != nil {
 		if bt.Right != nil {
 			// Has both children
-			bt.Left.printSelfHelper(childPrefix+"├── ", childPrefix+"│   ", false)
+			bt.Left.printSelfHelper(childPrefix+"├── L: ", childPrefix+"│      ", false)
 		} else {
 			// Only left child
-			bt.Left.printSelfHelper(childPrefix+"└── ", childPrefix+"    ", false)
+			bt.Left.printSelfHelper(childPrefix+"└── L: ", childPrefix+"       ", false)
 		}
 	}
 
 	if bt.Right != nil {
 		// Right child is always last
-		bt.Right.printSelfHelper(childPrefix+"└── ", childPrefix+"    ", false)
+		bt.Right.printSelfHelper(childPrefix+"└── R: ", childPrefix+"       ", false)
 	}
 }
