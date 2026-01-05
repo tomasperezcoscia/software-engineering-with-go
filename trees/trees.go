@@ -58,6 +58,19 @@ func (bt *Node) NonRecursiveInsert(value int) {
 	}
 }
 
+func (bt *Node) Search(value int) bool {
+	if bt == nil {
+		return false
+	} else {
+		if value > bt.Data {
+			return bt.Right.Search(value)
+		} else if value < bt.Data {
+			return bt.Left.Search(value)
+		}
+	}
+	return true
+}
+
 func (bt *Node) isLeaf() bool {
 	if bt.Left == nil && bt.Right == nil {
 		return true

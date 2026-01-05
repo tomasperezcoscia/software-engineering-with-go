@@ -268,4 +268,5 @@ func testBinaryTrees() {
 	root.NonRecursiveInsert(45)
 	root.NonRecursiveInsert(55)
 	root.PrintSelf()
+	fmt.Println(root.Search(55))
 }
